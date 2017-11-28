@@ -2,67 +2,50 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Deck {
-    private Card[] allCards = new Card[52];
-    private Card[] hand = new Card[52];
-
-    public Deck(boolean check){
-            if(check){
-                int count = 0;
-            for(int i=0;i<=4; i++){
-                for(int k=0; k<=13; k++){
-                    if(k<=10 && k > 1){
-                        String name = Integer.toString(k);
-                        allCards[count]= new Card(i, k, name);
-                        count++;
-                    }
-                    else if(k==1){
-                        allCards[count]= new Card(i, k, "Ace");
-                        count++;
-                    }
-                    else if(k==11){
-                        allCards[count]= new Card(i, k, "Jack");
-                        count++;
-                    }
-                    else if(k==12){
-                        allCards[count]= new Card(i, k, "Queen");
-                        count++;
-                    }
-                    else if(k==13){
-                        allCards[count]= new Card(i, k, "King");
-                        count++;
-                    }
+    Card[] allCards = new Card[52];
+    Card[] hand = new Card[7];
+    static int count = 0;
+    public Deck(boolean check) {
+        count = 0;
+        if (check==true) {
+            for (int i = 1; i <= 4; i++) {
+                for (int k = 1; k <= 13; k++) {
+                    allCards[count] = new Card(i, k);
+                    count++;
                 }
             }
         }
     }
 
-    public void swap(int first, int second){
-        Card temp = allCards[first];
-        allCards[first] = allCards[second];
-        allCards[second] = temp;
+    public void swap(int first, int second) {
+        Card temp = hand[first];
+        hand[first] = hand[second];
+        hand[second] = temp;
     }
 
-    public void dealHand(int numCards){
-        for(int i = 0; i<numCards; i++){
-            hand[i] = allCards[13];
+    public void dealHand(int numCards) {
+        for (int i = 0; i < numCards; i++) {
+            hand[i] = allCards[i];
         }
         System.out.println(hand);
     }
 
-    public void shuffleDeck(){
+    public void shuffleDeck() {
         Collections.shuffle(Arrays.asList(allCards));
     }
 
-    public void listHand(){
-        for(int i = 0; i < hand.length; i++){
+    public void listHand() {
+        for (int i = 0; i < hand.length; i++) {
             System.out.println(hand[i].name + " ");
         }
     }
 
-    public void bubbleSortHand(){
-        for(int i = 0; i< allCards.length - 2; i++){
-            if(allCards[i].value > allCards[i+1].value){
-                swap(i, i+1);
+    public void bubbleSortHand() {
+        for (int j = 0; j < hand.length - 1; j++){
+            for (int i = 0; i < hand.length - 1; i++) {
+                if (hand[i].value > hand[i + 1].value) {
+                    swap(i, i + 1);
+                }
             }
         }
     }
