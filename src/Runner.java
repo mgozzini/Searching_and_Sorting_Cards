@@ -5,16 +5,18 @@ public class Runner {
         d.shuffleDeck();
         d.dealHand(7);
         d.listHand();
+        /*
         d.bubbleSortHand();
         System.out.println("Bubble Sort:");
         d.listHand();
-        //d.selectionSortHand();
-        //System.out.println("Selection Sort:");
-        //d.listHand();
-        //d.mergeSortHand();
-        //System.out.println("Merge Sort:");
-        //d.listHand();
-        //d.binarySearch(2,3);
+        d.selectionSortHand();
+        System.out.println("Selection Sort:");
+        d.listHand();
+        d.mergeSortHand();
+        System.out.println("Merge Sort:");
+        d.listHand();
+        */
+        d.binarySearchHand(2,3);
     }
 
 }
