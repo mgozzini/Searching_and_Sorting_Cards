@@ -1,11 +1,9 @@
 public class Runner {
-    int cards[];
     public static void main(String[] args) {
         Deck d = new Deck(true);
         d.shuffleDeck();
         d.dealHand(7);
         d.listHand();
-        /*
         d.bubbleSortHand();
         System.out.println("Bubble Sort:");
         d.listHand();
@@ -15,8 +13,7 @@ public class Runner {
         d.mergeSortHand();
         System.out.println("Merge Sort:");
         d.listHand();
-        */
-        d.binarySearchHand(2,3);
+        d.binary(2,3);
     }
 
 }

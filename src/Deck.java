@@ -103,24 +103,43 @@ public class Deck {
             destination[i + j] = b[j];
     }
 
-    public void binarySearchHand(int suit, int face){
 
-            binarySearch(hand, suit, face);
+
+
+    public static Card[] LArray(Card[] array) {
+        int size = array.length / 2;
+        Card[] left = new Card[size];
+        for (int i = 0; i < size; i++) {
+            left[i] = array[i];
+        }
+        return left;
     }
-    public void binarySearch(Card[] array, int suit, int face){
-        if(suit == array[array.length / 2].suit && face == array[array.length / 2].value){
+    public static Card[] RArray(Card[] array) {
+        int size = array.length / 2;
+        int sizeB = array.length - size;
+        Card[] right = new Card[sizeB];
+        for (int i = 0; i <= sizeB - 1; i++) {
+            right[i] = array[i - 1 + sizeB];
+        }
+        return right;
+    }
+
+    public void binary(int Suit, int Value){
+        binarySearch(hand, Suit, Value);
+    }
+    public void binarySearch(Card[] array, int Suit, int Value){
+        if(Suit == array[array.length / 2].suit && Value == array[array.length / 2].value){
             System.out.println("Found: " + array[array.length / 2].name);
         }
-        if(suit < array[array.length / 2].suit || face < array[array.length / 2].value){
-            binarySearch(split(array, 0, array.length/2), suit, face);
+        if(Suit < array[array.length / 2].suit || Value < array[array.length / 2].value){
+            binarySearch(LArray(array), Suit, Value);
         }
-        if(face > array[array.length / 2].value || suit > array[array.length / 2].suit){
-            binarySearch(split(array, array.length/2, array.length), suit, face);
+        if(Value > array[array.length / 2].value || Suit > array[array.length / 2].suit){
+            binarySearch(RArray(array), Suit, Value);
         }
         if(array.length == 1){
             System.out.println("Card not in hand");
         }
-
     }
 
 }
